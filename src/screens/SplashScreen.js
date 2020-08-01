@@ -5,7 +5,7 @@ function SplashScreen() {
     return (
         <View style={styles.container}>
             <View style={styles.logoContainer}>
-                <Text style={{ fontSize: 40, color: 'white', marginBottom: 15 }}>AyoShopping</Text>
+                <Text style={{ fontSize: 40, color: 'white', marginBottom: 15 }}>AyoShopping!</Text>
                 <Image source={require('../assets/images/monitor.png')} style={{ height: 300, width: 0.8 * width }} />
             </View>
         </View>

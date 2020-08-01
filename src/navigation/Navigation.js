@@ -6,6 +6,7 @@ import Intro from '../screens/Intro';
 import Login from '../screens/Login';
 import Biodata from '../screens/Biodata'
 import Register from '../screens/Register'
+import TestApi from '../screens/TestApi'
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,7 @@ const MainNavigation = () => (
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="Biodata" component={Biodata} options={{ headerShown: false }} />
         <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
+        <Stack.Screen name="TestApi" component={TestApi} options={{ headerShown: false }} />
     </Stack.Navigator>
 )
 
