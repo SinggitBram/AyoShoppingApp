@@ -14,8 +14,8 @@ const { height, width } = Dimensions.get('window')
 import Axios from 'axios'
 import Asyncstorage from '@react-native-community/async-storage'
 import api from '../api/api'
-// import auth from '@react-native-firebase/auth'
-// import { GoogleSignin, statusCodes, GoogleSigninButton } from '@react-native-community/google-signin'
+import auth from '@react-native-firebase/auth'
+import { GoogleSignin, statusCodes, GoogleSigninButton } from '@react-native-community/google-signin'
 // import TouchID from 'react-native-touch-id'
 
 // const fingerprintConfig = {
@@ -40,36 +40,36 @@ function Login({ navigation }) {
         }
     }
 
-    // useEffect(() => {
-    //     configureGoogleSignIn()
-    // }, [])
+    useEffect(() => {
+        configureGoogleSignIn()
+    }, [])
 
-    // const configureGoogleSignIn = () => {
-    //     GoogleSignin.configure({
-    //         offlineAccess: false,
-    //         webClientId: '577473371365-ue1cab9mkv8bntbablpa4arvd8fdsa8s.apps.googleusercontent.com'
-    //     })
-    // }
+    const configureGoogleSignIn = () => {
+        GoogleSignin.configure({
+            offlineAccess: false,
+            webClientId: '713244706516-j11poqarf7otcq8knfi73ddqp6b8kpsu.apps.googleusercontent.com'
+        })
+    }
 
-    // const signInWithGoogle = async () => {
-    //     try {
-    //         const { idToken } = await GoogleSignin.signIn()
-    //         // ini supaya google sign in integrasi dengan firebase 
-    //         const credential = auth.GoogleAuthProvider.credential(idToken)
-    //         auth().signInWithCredential(credential)
-    //         navigation.navigate('Biodata')
+    const signInWithGoogle = async () => {
+        try {
+            const { idToken } = await GoogleSignin.signIn()
+            // ini supaya google sign in integrasi dengan firebase 
+            const credential = auth.GoogleAuthProvider.credential(idToken)
+            auth().signInWithCredential(credential)
+            navigation.navigate('Biodata')
 
-    //     } catch (error) {
-    //         Alert.alert(
-    //             'Something Went Wrong',
-    //             'Please try again',
-    //             [
-    //                 { text: 'OK', onPress: () => console.log('OK Pressed') }
-    //             ],
-    //             { cancelable: false }
-    //         );
-    //     }
-    // }
+        } catch (error) {
+            Alert.alert(
+                'Something Went Wrong',
+                'Please try again',
+                [
+                    { text: 'OK', onPress: () => console.log('OK Pressed') }
+                ],
+                { cancelable: false }
+            );
+        }
+    }
 
     const onRegisterPress = () => {
         navigation.navigate('Register')
@@ -86,7 +86,7 @@ function Login({ navigation }) {
                 navigation.navigate('TestApi')
             })
             .catch(err => {
-                console.log(email,password)
+                console.log(email, password)
                 Alert.alert(
                     'Wrong Email/Password',
                     'Please try again',
@@ -111,7 +111,7 @@ function Login({ navigation }) {
     return (
         <View style={styles.container}>
             <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
-            <Image source={require('../assets/images/monitor.png')} style={{ width: 200, height: 200 ,marginTop:30, marginBottom:10}} />
+            <Image source={require('../assets/images/monitor.png')} style={{ width: 200, height: 200, marginTop: 30, marginBottom: 10 }} />
             <Text style={{ alignSelf: 'flex-start', marginLeft: 20, fontWeight: 'bold', fontSize: 20 }}>Email</Text>
             <View style={styles.inputText}>
                 <TextInput textContentType='emailAddress' value={email} onChangeText={(email) => setEmail(email)} placeholder="Email" style={{ fontSize: 13 }}></TextInput>
@@ -121,19 +121,19 @@ function Login({ navigation }) {
                 <TextInput secureTextEntry={true} value={password} onChangeText={(password) => setPassword(password)} placeholder="Password" style={{ fontSize: 13 }}></TextInput>
             </View>
             <TouchableOpacity onPress={() => onLoginPress()} style={styles.buttonMasuk}>
-                <Text style={{ backgroundColor: "#6c5ce7", color: "white", paddingHorizontal: 25, paddingVertical: 5, borderRadius: 10, width: width * 0.9, textAlign: 'center' }}>LOGIN</Text>
+                <Text style={{ backgroundColor: "#6c5ce7", color: "white", paddingHorizontal: 25, paddingVertical: 5, borderRadius: 10, width: width * 0.9, textAlign: 'center', elevation: 5 }}>LOGIN</Text>
             </TouchableOpacity>
             {/* <View style={{ marginTop: 10, marginBottom: 5 }}>
                 <Text style={{ textAlign: 'center' }}>─────────  OR  ─────────</Text>
             </View> */}
-            {/* <View style={{ marginTop: 5 }}>
+            <View style={{ marginTop: 5 }}>
                 <GoogleSigninButton
                     onPress={() => signInWithGoogle()}
                     style={{ width: 330, height: 40 }}
                     size={GoogleSigninButton.Size.Wide}
                     color={GoogleSigninButton.Color.Dark}
                 />
-            </View> */}
+            </View>
             {/* <TouchableOpacity onPress={() => signInWithFingerprint()} style={styles.buttonMasuk}>
                 <Text style={{ backgroundColor: "#191970", color: "white", paddingHorizontal: 25, paddingVertical: 5, borderRadius: 5, width: width * 0.9, textAlign: 'center' }}>SIGN IN WITH FINGERPRINT</Text>
             </TouchableOpacity> */}
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: "#6c5ce7",
         flexDirection: "row",
-        borderRadius:20
+        borderRadius: 20
     },
     buttonMasuk: {
         marginTop: 20,

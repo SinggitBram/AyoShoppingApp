@@ -26,7 +26,7 @@ function AppNavigation() {
     React.useEffect(() => {
         setTimeout(() => {
             setIsLoading(!isLoading)
-        }, 3000)
+        }, 2000)
     }, [])
 
     if (isLoading) {
