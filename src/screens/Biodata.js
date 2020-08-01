@@ -38,7 +38,7 @@ export default function Biodata({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.partAtas}>
-                <Image source={{ uri: userInfo && userInfo.user && userInfo.user.photo }} style={{ width: 80, height: 80, borderRadius: 300, marginBottom: 15 }} />
+                <Image source={userInfo === null ? require('../assets/images/Singgit_Bramantha.jpg') : { uri: userInfo.user.photo }} style={{ width: 80, height: 80, borderRadius: 300, marginBottom: 15 }} />
             </View>
             <View style={styles.partBawah}>
                 <View style={styles.boxData}>
@@ -47,7 +47,7 @@ export default function Biodata({ navigation }) {
                     </View>
                     <View style={styles.baris}>
                         <Text style={styles.tulisan}>Nama:</Text>
-                        <Text style={styles.tulisan}>{userInfo && userInfo.user && userInfo.user.name}</Text>
+                        <Text style={styles.tulisan}>{userInfo === null ? 'Singgit Bramantha' : userInfo.user.name}</Text>
                     </View>
                     <View style={styles.baris}>
                         <Text style={styles.tulisan}>Tanggal Lahir:</Text>
@@ -59,7 +59,7 @@ export default function Biodata({ navigation }) {
                     </View>
                     <View style={styles.baris}>
                         <Text style={styles.tulisan}>Email:</Text>
-                        <Text style={styles.tulisan}>{userInfo && userInfo.user && userInfo.user.email}</Text>
+                        <Text style={styles.tulisan}>{userInfo === null ? 'Singgit Bramantha' : userInfo.user.email}</Text>
                     </View>
                 </View>
                 <View style={styles.boxSaldo}>

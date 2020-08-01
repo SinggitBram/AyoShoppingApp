@@ -16,16 +16,16 @@ import Asyncstorage from '@react-native-community/async-storage'
 import api from '../api/api'
 import auth from '@react-native-firebase/auth'
 import { GoogleSignin, statusCodes, GoogleSigninButton } from '@react-native-community/google-signin'
-// import TouchID from 'react-native-touch-id'
+import TouchID from 'react-native-touch-id'
 
-// const fingerprintConfig = {
-//     title: 'Authentication Required',
-//     imageColor: "#191970",
-//     imageErrorColor: "red",
-//     sensorDescription: 'Touch sensor',
-//     sensorErrorDescription: 'Failed',
-//     cancelText: 'Cancel'
-// }
+const fingerprintConfig = {
+    title: 'Authentication Required',
+    imageColor: "#191970",
+    imageErrorColor: "red",
+    sensorDescription: 'Touch sensor',
+    sensorErrorDescription: 'Failed',
+    cancelText: 'Cancel'
+}
 
 function Login({ navigation }) {
 
@@ -98,15 +98,15 @@ function Login({ navigation }) {
             })
     }
 
-    // const signInWithFingerprint = () => {
-    //     TouchID.authenticate('', fingerprintConfig)
-    //         .then(success => {
-    //             navigation.navigate('Biodata')
-    //         })
-    //         .catch(error => {
-    //             alert("Authentication Failed")
-    //         })
-    // }
+    const signInWithFingerprint = () => {
+        TouchID.authenticate('', fingerprintConfig)
+            .then(success => {
+                navigation.navigate('Biodata')
+            })
+            .catch(error => {
+                alert("Authentication Failed")
+            })
+    }
 
     return (
         <View style={styles.container}>
@@ -123,9 +123,6 @@ function Login({ navigation }) {
             <TouchableOpacity onPress={() => onLoginPress()} style={styles.buttonMasuk}>
                 <Text style={{ backgroundColor: "#6c5ce7", color: "white", paddingHorizontal: 25, paddingVertical: 5, borderRadius: 10, width: width * 0.9, textAlign: 'center', elevation: 5 }}>LOGIN</Text>
             </TouchableOpacity>
-            {/* <View style={{ marginTop: 10, marginBottom: 5 }}>
-                <Text style={{ textAlign: 'center' }}>─────────  OR  ─────────</Text>
-            </View> */}
             <View style={{ marginTop: 5 }}>
                 <GoogleSigninButton
                     onPress={() => signInWithGoogle()}
@@ -134,9 +131,9 @@ function Login({ navigation }) {
                     color={GoogleSigninButton.Color.Dark}
                 />
             </View>
-            {/* <TouchableOpacity onPress={() => signInWithFingerprint()} style={styles.buttonMasuk}>
-                <Text style={{ backgroundColor: "#191970", color: "white", paddingHorizontal: 25, paddingVertical: 5, borderRadius: 5, width: width * 0.9, textAlign: 'center' }}>SIGN IN WITH FINGERPRINT</Text>
-            </TouchableOpacity> */}
+            <TouchableOpacity onPress={() => signInWithFingerprint()} style={{ marginTop: 5 }}>
+                <Text style={{ elevation: 5, backgroundColor: "#191970", color: "white", paddingHorizontal: 25, paddingVertical: 5, borderRadius: 5, width: width * 0.9, textAlign: 'center' }}>SIGN IN WITH FINGERPRINT</Text>
+            </TouchableOpacity>
             <TouchableOpacity onPress={() => onRegisterPress()} style={{ marginTop: 'auto' }}>
                 <Text style={{ marginBottom: 20 }}>Belum mempunyai akun ? <Text style={{ color: "blue" }}>Buat Akun</Text></Text>
             </TouchableOpacity>
