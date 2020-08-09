@@ -57,7 +57,7 @@ function Login({ navigation }) {
             // ini supaya google sign in integrasi dengan firebase 
             const credential = auth.GoogleAuthProvider.credential(idToken)
             auth().signInWithCredential(credential)
-            navigation.navigate('Biodata')
+            navigation.navigate('Utama')
 
         } catch (error) {
             Alert.alert(
@@ -83,10 +83,9 @@ function Login({ navigation }) {
         Axios.post(`${api}/login`, data)
             .then(res => {
                 saveToken(res.data.token)
-                navigation.navigate('TestApi')
+                navigation.navigate('Utama')
             })
             .catch(err => {
-                console.log(email, password)
                 Alert.alert(
                     'Wrong Email/Password',
                     'Please try again',
@@ -101,7 +100,7 @@ function Login({ navigation }) {
     const signInWithFingerprint = () => {
         TouchID.authenticate('', fingerprintConfig)
             .then(success => {
-                navigation.navigate('Biodata')
+                navigation.navigate('Utama')
             })
             .catch(error => {
                 alert("Authentication Failed")
@@ -114,11 +113,11 @@ function Login({ navigation }) {
             <Image source={require('../assets/images/monitor.png')} style={{ width: 200, height: 200, marginTop: 30, marginBottom: 10 }} />
             <Text style={{ alignSelf: 'flex-start', marginLeft: 20, fontWeight: 'bold', fontSize: 20 }}>Email</Text>
             <View style={styles.inputText}>
-                <TextInput textContentType='emailAddress' value={email} onChangeText={(email) => setEmail(email)} placeholder="Email" style={{ fontSize: 13 }}></TextInput>
+                <TextInput autoCapitalize="none" textContentType='emailAddress' value={email} onChangeText={(email) => setEmail(email)} placeholder="Email" style={{ fontSize: 13 }}></TextInput>
             </View>
             <Text style={{ alignSelf: 'flex-start', marginLeft: 20, fontWeight: 'bold', marginTop: 10, fontSize: 20 }}>Password</Text>
             <View style={styles.inputText}>
-                <TextInput secureTextEntry={true} value={password} onChangeText={(password) => setPassword(password)} placeholder="Password" style={{ fontSize: 13 }}></TextInput>
+                <TextInput autoCapitalize="none" secureTextEntry={true} value={password} onChangeText={(password) => setPassword(password)} placeholder="Password" style={{ fontSize: 13 }}></TextInput>
             </View>
             <TouchableOpacity onPress={() => onLoginPress()} style={styles.buttonMasuk}>
                 <Text style={{ backgroundColor: "#6c5ce7", color: "white", paddingHorizontal: 25, paddingVertical: 5, borderRadius: 10, width: width * 0.9, textAlign: 'center', elevation: 5 }}>LOGIN</Text>

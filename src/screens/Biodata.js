@@ -27,8 +27,8 @@ export default function Biodata({ navigation }) {
 
     const onLogoutPress = async () => {
         try {
-            await GoogleSignin.revokeAccess()
-            await GoogleSignin.signOut()
+            // await GoogleSignin.revokeAccess()
+            // await GoogleSignin.signOut()
             navigation.navigate('Login')
         } catch (err) {
             console.log(err)

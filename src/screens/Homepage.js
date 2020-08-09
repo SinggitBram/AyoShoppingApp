@@ -1,0 +1,111 @@
+import React, { useEffect, useState } from 'react';
+import { View, StyleSheet, ScrollView, Text, SafeAreaView, Image, Dimensions } from 'react-native';
+import Carousel from 'react-native-snap-carousel';
+
+const { height, width } = Dimensions.get('window')
+
+export default function Homepage() {
+
+    const [activeIndex, setActiveIndex] = useState(0)
+    const [carouselItems, setCarouselItems] = useState([
+        {
+            gambar: require('../assets/images/promo1.jpg'),
+        },
+        {
+            gambar: require('../assets/images/promo2.jpg'),
+        },
+        {
+            gambar: require('../assets/images/promo3.jpeg'),
+        },
+        {
+            gambar: require('../assets/images/promo4.jpg'),
+        },
+        {
+            gambar: require('../assets/images/promo5.jpg'),
+        },
+    ])
+
+    const renderItem = ({ item }) => {
+        console.log(item.gambar)
+
+        return (
+            <View style={{
+                backgroundColor: 'white',
+                borderRadius: 10,
+                height: height * 0.4,
+                marginLeft: 5,
+                marginRight: 5,
+            }}>
+                <Image source={item.gambar} style={{ width: '100%', height: '100%', borderRadius: 10 }} />
+            </View>
+        )
+    }
+
+    return (
+        <View style={styles.container}>
+            <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'flex-start' }}>
+                <Carousel
+                    layout={"default"}
+                    ref={ref => ref}
+                    data={carouselItems}
+                    sliderWidth={300}
+                    itemWidth={330}
+                    renderItem={renderItem}
+                    onSnapToItem={(index) => setActiveIndex(index)} />
+            </View>
+            <View style={{ marginVertical: 15 }}>
+                <Text style={{fontSize:20}}>Kategori Pilihan</Text>
+            </View>
+            <View style={styles.categoryContainer}>
+                <View style={styles.categoryItem}>
+                    <Image source={require('../assets/images/elektronik.jpg')} style={{ width: '90%', height: '90%', borderRadius: 10 }} />
+                    <Text>Elektronik</Text>
+                </View>
+                <View style={styles.categoryItem}>
+                    <Image source={require('../assets/images/obat.jpg')} style={{ width: '90%', height: '90%', borderRadius: 10 }} />
+                    <Text>Kesehatan</Text>
+                </View>
+                <View style={styles.categoryItem}>
+                    <Image source={require('../assets/images/kecantikan.jpg')} style={{ width: '90%', height: '90%', borderRadius: 10 }} />
+                    <Text>Kecantikan</Text>
+                </View>
+                <View style={styles.categoryItem}>
+                    <Image source={require('../assets/images/dapur.jpg')} style={{ width: '90%', height: '90%', borderRadius: 10 }} />
+                    <Text>Dapur</Text>
+                </View>
+                <View style={styles.categoryItem}>
+                    <Image source={require('../assets/images/ibu.jpg')} style={{ width: '90%', height: '90%', borderRadius: 10 }} />
+                    <Text>Ibu & Anak</Text>
+                </View>
+                <View style={styles.categoryItem}>
+                    <Image source={require('../assets/images/makanan.jpg')} style={{ width: '90%', height: '90%', borderRadius: 10 }} />
+                    <Text>Makanan & Minuman</Text>
+                </View>
+            </View>
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#a29bfe',
+        alignItems: 'center',
+        display: 'flex',
+    },
+    categoryContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        height: height * 0.4,
+        width: width * 0.95,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    categoryItem: {
+        display: 'flex',
+        width: '33%',
+        height: '40%',
+        marginBottom: 10
+    }
+});
