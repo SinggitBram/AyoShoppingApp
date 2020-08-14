@@ -8,7 +8,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import { GoogleSignin, statusCodes } from '@react-native-community/google-signin'
+import { GoogleSignin } from '@react-native-community/google-signin'
 
 const { height, width } = Dimensions.get('window')
 
@@ -51,7 +51,7 @@ export default function Biodata({ navigation }) {
                     </View>
                     <View style={styles.baris}>
                         <Text style={styles.tulisan}>Tanggal Lahir:</Text>
-                        <Text style={styles.tulisan}>27 December 1987</Text>
+                        <Text style={styles.tulisan}>1 December 1999</Text>
                     </View>
                     <View style={styles.baris}>
                         <Text style={styles.tulisan}>No. Telp:</Text>
@@ -130,9 +130,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-around"
     },
     buttonKeluar: {
-        marginTop: 10,
         alignItems: 'center',
-        marginBottom: 10
     },
     boxSaldo: {
         backgroundColor: "#30336b",
@@ -145,6 +143,6 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: "space-between",
         paddingVertical: 10,
-        marginTop: 20
+        marginTop: 10
     }
 });

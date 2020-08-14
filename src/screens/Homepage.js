@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, ScrollView, Text, SafeAreaView, Image, Dimensions } from 'react-native';
+import { View, StyleSheet, ScrollView, Text, SafeAreaView, Image, Dimensions, TextInput } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
+import IonIcons from 'react-native-vector-icons/Ionicons'
 
 const { height, width } = Dimensions.get('window')
 
@@ -32,7 +33,7 @@ export default function Homepage() {
             <View style={{
                 backgroundColor: 'white',
                 borderRadius: 10,
-                height: height * 0.4,
+                height: height * 0.3,
                 marginLeft: 5,
                 marginRight: 5,
             }}>
@@ -43,6 +44,15 @@ export default function Homepage() {
 
     return (
         <View style={styles.container}>
+            <View style={styles.inputText}>
+                <IonIcons style={{ marginRight: 5 }} name="search" size={24} color="black" />
+                <TextInput placeholder="Search for LCD TV" style={{ fontSize: 13, height: 40, width: width * 0.6 ,backgroundColor:'#dfe6e9'}}></TextInput>
+                <IonIcons style={{ marginRight: 10 }} name="heart" size={24} color="grey" />
+                <IonIcons style={{ marginRight: 10 }} name="mail" size={24} color="grey" />
+                <IonIcons style={{ marginRight: 10 }} name="notifications" size={24} color="grey" />
+
+
+            </View>
             <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'flex-start' }}>
                 <Carousel
                     layout={"default"}
@@ -53,33 +63,33 @@ export default function Homepage() {
                     renderItem={renderItem}
                     onSnapToItem={(index) => setActiveIndex(index)} />
             </View>
-            <View style={{ marginVertical: 15 }}>
-                <Text style={{fontSize:20}}>Kategori Pilihan</Text>
+            <View style={{ marginVertical: 10, width: width, backgroundColor: "#6c5ce7" }}>
+                <Text style={{ fontSize: 20, textAlign: "center", color: "white" }}>Kategori Pilihan</Text>
             </View>
             <View style={styles.categoryContainer}>
                 <View style={styles.categoryItem}>
                     <Image source={require('../assets/images/elektronik.jpg')} style={{ width: '90%', height: '90%', borderRadius: 10 }} />
-                    <Text>Elektronik</Text>
+                    <Text style={styles.tulisanKategori}>Elektronik</Text>
                 </View>
                 <View style={styles.categoryItem}>
                     <Image source={require('../assets/images/obat.jpg')} style={{ width: '90%', height: '90%', borderRadius: 10 }} />
-                    <Text>Kesehatan</Text>
+                    <Text style={styles.tulisanKategori}>Kesehatan</Text>
                 </View>
                 <View style={styles.categoryItem}>
                     <Image source={require('../assets/images/kecantikan.jpg')} style={{ width: '90%', height: '90%', borderRadius: 10 }} />
-                    <Text>Kecantikan</Text>
+                    <Text style={styles.tulisanKategori}>Kecantikan</Text>
                 </View>
                 <View style={styles.categoryItem}>
                     <Image source={require('../assets/images/dapur.jpg')} style={{ width: '90%', height: '90%', borderRadius: 10 }} />
-                    <Text>Dapur</Text>
+                    <Text style={styles.tulisanKategori}>Dapur</Text>
                 </View>
                 <View style={styles.categoryItem}>
                     <Image source={require('../assets/images/ibu.jpg')} style={{ width: '90%', height: '90%', borderRadius: 10 }} />
-                    <Text>Ibu & Anak</Text>
+                    <Text style={styles.tulisanKategori}>Ibu & Anak</Text>
                 </View>
                 <View style={styles.categoryItem}>
                     <Image source={require('../assets/images/makanan.jpg')} style={{ width: '90%', height: '90%', borderRadius: 10 }} />
-                    <Text>Makanan & Minuman</Text>
+                    <Text style={styles.tulisanKategori}>Makanan & Minuman</Text>
                 </View>
             </View>
         </View>
@@ -106,6 +116,18 @@ const styles = StyleSheet.create({
         display: 'flex',
         width: '33%',
         height: '40%',
-        marginBottom: 10
-    }
+        marginBottom: 15
+    },
+    tulisanKategori: {
+        color: "#191970"
+    },
+    inputText: {
+        width: width,
+        paddingHorizontal: 10,
+        flexDirection: "row",
+        backgroundColor: "white",
+        alignItems: "center",
+        display: 'flex',
+        backgroundColor:'#dfe6e9'
+    },
 });

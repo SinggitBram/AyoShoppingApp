@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AyoShopping</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">UibfpbGN6o6NsPHTVOrzY0ohlcEDqiKzxgzdI</string>
 </resources>

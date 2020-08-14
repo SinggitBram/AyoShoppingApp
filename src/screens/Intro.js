@@ -8,7 +8,7 @@ const slides = [
     {
         key: 1,
         title: 'Find Your Favorite Items',
-        text: 'Search From Sellers Around The World',
+        text: 'Shop From Sellers Around Indonesia',
         image: require('../assets/images/search.png')
     },
     {
